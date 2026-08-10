@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prithvi C Balaji — Business Analyst</title>
+<meta name="description" content="Business analyst intern at Tricog Health. I find the gap between where a business is and where it wants to be, then help close it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1116;
+    --slate:#414B58;
+    --paper:#E9ECF0;
+    --card:#F4F6F8;
+    --rule:#C0C8D2;
+    --measure:#2547D0;
+    --closed:#0E7C5A;
+    --display:"Archivo","Helvetica Neue",Arial,sans-serif;
+    --body:"Newsreader",Georgia,serif;
+    --data:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--body);font-size:18px;line-height:1.55;
+    font-weight:300;
+  }
+  .wrap{max-width:840px;margin:0 auto;padding:0 28px}
+
+  /* ---------- eyebrow / utility type ---------- */
+  .eyebrow{
+    font-family:var(--data);font-size:11px;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--slate);
+  }
+
+  /* ---------- hero ---------- */
+  header{padding:80px 0 0}
+  h1{
+    font-family:var(--display);font-weight:800;
+    font-size:clamp(38px,7.2vw,68px);line-height:1.02;
+    letter-spacing:-.025em;margin:16px 0 0;
+  }
+  .lede{
+    font-size:clamp(19px,2.4vw,23px);line-height:1.45;
+    color:var(--slate);max-width:46ch;margin:22px 0 0;
+  }
+  .contact{
+    margin:30px 0 0;font-family:var(--data);font-size:12.5px;
+    letter-spacing:.02em;line-height:2.1;
+  }
+  .contact a{margin-right:18px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:2px}
+  .contact a:hover,.contact a:focus-visible{border-bottom-color:var(--measure);color:var(--measure)}
+  .contact span{color:var(--slate)}
+
+  /* ---------- signature: the gap bar ---------- */
+  .measure{margin:56px 0 0}
+  .measure-head{
+    display:flex;justify-content:space-between;align-items:baseline;
+    gap:16px;margin-bottom:10px;
+  }
+  .bar{
+    position:relative;height:34px;background:var(--card);
+    border:1px solid var(--rule);overflow:hidden;
+  }
+  .fill{
+    position:absolute;top:0;bottom:0;left:0;width:var(--to);background:var(--measure);
+    animation:grow 1.5s cubic-bezier(.2,.7,.25,1) .25s both;
+  }
+  .fill.done{background:var(--closed)}
+  @keyframes grow{from{width:0}to{width:var(--to)}}
+  .ticks{
+    display:flex;justify-content:space-between;
+    font-family:var(--data);font-size:11px;color:var(--slate);
+    margin-top:8px;letter-spacing:.04em;
+  }
+  .gap-note{
+    font-family:var(--data);font-size:11.5px;color:var(--measure);
+    font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  }
+
+  /* ---------- sections ---------- */
+  section{padding:74px 0 0}
+  h2{
+    font-family:var(--display);font-weight:700;font-size:13px;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--slate);
+    margin:0 0 26px;padding-bottom:12px;border-bottom:1px solid var(--rule);
+  }
+
+  /* ---------- ledger entries ---------- */
+  .entry{padding:30px 0;border-bottom:1px solid var(--rule)}
+  .entry:last-child{border-bottom:0}
+  .entry-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
+  h3{
+    font-family:var(--display);font-weight:700;
+    font-size:clamp(21px,3vw,27px);letter-spacing:-.015em;
+    margin:0;line-height:1.2;
+  }
+  .role{color:var(--slate);font-size:17px;margin:4px 0 0}
+  .when{font-family:var(--data);font-size:12px;color:var(--slate);white-space:nowrap}
+
+  .gmr{margin:20px 0 0;display:grid;gap:14px}
+  .gmr-row{display:grid;grid-template-columns:88px 1fr;gap:18px;align-items:start}
+  .gmr-label{
+    font-family:var(--data);font-size:10.5px;font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--slate);
+    padding-top:6px;
+  }
+  .gmr-row p{margin:0;font-size:17px;line-height:1.5}
+  .result{border-left:2px solid var(--closed);padding-left:16px;margin-left:-18px}
+  .delta{font-family:var(--data);font-weight:600;color:var(--closed)}
+
+  .qa{margin:18px 0 0;padding:18px 20px;background:var(--card);border:1px solid var(--rule)}
+  .qa .eyebrow{display:block;margin-bottom:10px}
+  .qa ul{margin:0;padding-left:18px}
+  .qa li{font-size:16px;color:var(--slate);margin-bottom:5px;font-style:italic}
+  .qa li:last-child{margin-bottom:0}
+
+  /* ---------- two-col lists ---------- */
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:34px}
+  .stack p{margin:0 0 4px}
+  .stack .k{
+    font-family:var(--data);font-size:10.5px;font-weight:600;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--slate);margin:0 0 6px;
+  }
+  .stack .v{font-size:16.5px;line-height:1.5;margin:0 0 22px}
+  .edu-row{display:flex;justify-content:space-between;gap:14px;padding:12px 0;border-bottom:1px solid var(--rule);flex-wrap:wrap}
+  .edu-row:last-child{border-bottom:0}
+  .edu-row strong{font-family:var(--display);font-weight:700;font-size:16px}
+  .edu-row .sub{color:var(--slate);font-size:15.5px}
+  .edu-row .num{font-family:var(--data);font-size:12.5px;color:var(--slate);white-space:nowrap}
+
+  .lead-item{padding:16px 0;border-bottom:1px solid var(--rule)}
+  .lead-item:last-child{border-bottom:0}
+  .lead-item h4{font-family:var(--display);font-weight:700;font-size:16.5px;margin:0 0 4px}
+  .lead-item p{margin:0;font-size:16.5px;color:var(--slate);line-height:1.5}
+
+  footer{padding:70px 0 90px;margin-top:60px;border-top:1px solid var(--rule)}
+  .foot-line{font-family:var(--display);font-weight:700;font-size:clamp(22px,4vw,34px);letter-spacing:-.02em;margin:0 0 20px}
+
+  a:focus-visible{outline:2px solid var(--measure);outline-offset:3px}
+
+  @media (max-width:640px){
+    body{font-size:17px}
+    .wrap{padding:0 20px}
+    header{padding-top:52px}
+    .cols{grid-template-columns:1fr;gap:26px}
+    .gmr-row{grid-template-columns:1fr;gap:6px}
+    .gmr-label{padding-top:0}
+    .result{margin-left:0;border-left:0;border-top:2px solid var(--closed);padding-left:0;padding-top:12px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .fill{animation:none;width:var(--to)}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Bengaluru, India &nbsp;/&nbsp; B.E. Electronics &amp; Communication, 2027</p>
+  <h1>Prithvi C Balaji</h1>
+  <p class="lede">I find the gap between where a business is and where it wants to be &mdash; then help close it. Currently a business analyst intern on Tricog Health's Automation &amp; Business Intelligence team.</p>
+
+  <div class="contact">
+    <a href="mailto:prithvi.aryan071@gmail.com">prithvi.aryan071@gmail.com</a>
+    <a href="tel:+918618565590">+91 86185 65590</a>
+    <a href="https://linkedin.com/in/prithvi-c-2ba646403">LinkedIn</a>
+  </div>
+
+  <div class="measure">
+    <div class="measure-head">
+      <p class="eyebrow" style="margin:0">The problem I build for</p>
+      <p class="gap-note" style="margin:0">Gap: 5 units</p>
+    </div>
+    <div class="bar"><div class="fill" style="--to:75%;width:75%"></div></div>
+    <div class="ticks">
+      <span>15 achieved</span>
+      <span>AOP 20</span>
+    </div>
+    <p style="margin:14px 0 0;color:var(--slate);font-size:16.5px;max-width:56ch">
+      An area sales manager ends July at 15 units against a target of 20. The gap is easy to see. Knowing <em>which dealers and which unworked leads will close it</em> is not. That is the problem I was handed at Tricog, and it is the kind of problem I want to keep working on.
+    </p>
+  </div>
+</header>
+
+<section>
+  <h2>Work</h2>
+
+  <article class="entry">
+    <div class="entry-top">
+      <div>
+        <h3>Tricog Health</h3>
+        <p class="role">Business Analyst Intern &mdash; Automation &amp; Business Intelligence</p>
+      </div>
+      <p class="when">2026 &ndash; Present</p>
+    </div>
+
+    <div class="gmr">
+      <div class="gmr-row">
+        <p class="gmr-label">Gap</p>
+        <p>Area sales managers had no self-service way to understand how to close their monthly target gap &mdash; no quick view of which dealers or agents were best positioned to help, or which open leads were still sitting unworked.</p>
+      </div>
+      <div class="gmr-row">
+        <p class="gmr-label">Move</p>
+        <p>Scoped the problem with the sales organisation, then built a conversational AI agent that answers those questions directly, in plain language, with charts on demand.</p>
+      </div>
+      <div class="gmr-row result">
+        <p class="gmr-label">Result</p>
+        <p>ASMs can now interrogate their own number instead of waiting on a report. <span class="delta">Self-service, dealer-wise, on demand.</span></p>
+      </div>
+    </div>
+
+    <div class="qa">
+      <p class="eyebrow">Questions the agent answers</p>
+      <ul>
+        <li>How do I close my remaining target for this month?</li>
+        <li>Which dealers should I lean on to hit my number?</li>
+        <li>What open leads do I have, dealer-wise?</li>
+        <li>Show me my achievement with a chart.</li>
+      </ul>
+    </div>
+
+    <div class="gmr" style="margin-top:26px">
+      <div class="gmr-row">
+        <p class="gmr-label">Gap</p>
+        <p>Customer support was answering the same first-response questions by hand, from a knowledge base scattered across sources.</p>
+      </div>
+      <div class="gmr-row">
+        <p class="gmr-label">Move</p>
+        <p>Built a menu-based WhatsApp support chatbot in <strong>n8n</strong> covering four query categories &mdash; hardware, software, reporting, and account/billing &mdash; and consolidated the knowledge base into a single categorised repository by mapping and classifying historical ticket types. Designed the human-agent escalation logic.</p>
+      </div>
+      <div class="gmr-row result">
+        <p class="gmr-label">Result</p>
+        <p>First responses handled automatically, with a <span class="delta">clean escalation path</span> to a human when the bot cannot resolve it. Contributed to dashboards tracking ticket volume and resolution.</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="entry">
+    <div class="entry-top">
+      <div>
+        <h3>Red Bull</h3>
+        <p class="role">Student Marketeer &mdash; MSRIT Campus</p>
+      </div>
+      <p class="when">2024 &ndash; 2025</p>
+    </div>
+    <div class="gmr">
+      <div class="gmr-row">
+        <p class="gmr-label">Gap</p>
+        <p>The brand had no reliable on-campus distribution and no consistent presence at MSRIT.</p>
+      </div>
+      <div class="gmr-row">
+        <p class="gmr-label">Move</p>
+        <p>Analysed student footfall patterns, pitched the college canteen on stocking the product, and negotiated placement &mdash; owning the account from first approach through to close. Ran brand-activation events and the recruitment funnel end to end.</p>
+      </div>
+      <div class="gmr-row result">
+        <p class="gmr-label">Result</p>
+        <p><span class="delta">+33% on-campus sales.</span> 16 participants signed up for the Red Bull Wings for Life World Run.</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="entry">
+    <div class="entry-top">
+      <div>
+        <h3>Kapoor's Cafe</h3>
+        <p class="role">Business diagnostic &amp; advisory &mdash; management coursework</p>
+      </div>
+      <p class="when">2025 &ndash; 2026</p>
+    </div>
+    <div class="gmr">
+      <div class="gmr-row">
+        <p class="gmr-label">Gap</p>
+        <p>An independent cafe was losing reach it could not account for, and the owner had no diagnosis of why.</p>
+      </div>
+      <div class="gmr-row">
+        <p class="gmr-label">Move</p>
+        <p>Ran an on-site diagnostic &mdash; site visit plus a structured interview with the founder &mdash; and used root-cause analysis to surface an unaddressed gap in the marketing strategy. Pitched a targeted social-media initiative directly to him.</p>
+      </div>
+      <div class="gmr-row result">
+        <p class="gmr-label">Result</p>
+        <p>The owner adopted the recommendation. It contributed to a reported <span class="delta">26% increase in sales</span>, validated directly by the founder.</p>
+      </div>
+    </div>
+  </article>
+</section>
+
+<section>
+  <h2>What I work with</h2>
+  <div class="cols">
+    <div class="stack">
+      <p class="k">Business</p>
+      <p class="v">Requirements gathering, sales &amp; pipeline analysis, market research, industry and competitor analysis, root-cause analysis, stakeholder interviewing, negotiation, presentations.</p>
+      <p class="k">Languages spoken</p>
+      <p class="v">English, Hindi, Kannada (native). Tamil, Telugu, Malayalam (conversational).</p>
+    </div>
+    <div class="stack">
+      <p class="k">Technical</p>
+      <p class="v">SQL, Power BI, n8n workflow automation, conversational AI and chatbot design, Advanced Excel, Advanced PowerPoint, Python, C, C++, data structures &amp; algorithms.</p>
+      <p class="k">Also</p>
+      <p class="v">100+ problems solved on LeetCode.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Education</h2>
+  <div class="edu-row">
+    <div>
+      <strong>M S Ramaiah Institute of Technology</strong>
+      <div class="sub">B.E., Electronics &amp; Communication &mdash; Bengaluru</div>
+    </div>
+    <div class="num">CGPA 7.9 / 10 &nbsp;&middot;&nbsp; 2023&ndash;2027</div>
+  </div>
+  <div class="edu-row">
+    <div>
+      <strong>Deeksha College</strong>
+      <div class="sub">Pre-University, Science (PCMB) &mdash; Bengaluru</div>
+    </div>
+    <div class="num">95% &nbsp;&middot;&nbsp; 2021&ndash;2023</div>
+  </div>
+  <div class="edu-row">
+    <div>
+      <strong>St. Paul's English School</strong>
+      <div class="sub">ICSE, Class X &mdash; Bengaluru</div>
+    </div>
+    <div class="num">89% &nbsp;&middot;&nbsp; 2011&ndash;2021</div>
+  </div>
+</section>
+
+<section>
+  <h2>Leading &amp; competing</h2>
+  <div class="lead-item">
+    <h4>Mechanical Team Lead &mdash; Steir Racing (Formula Student), MSRIT</h4>
+    <p>Led the mechanical subsystem team in designing and manufacturing a working EV race car in-house, under fixed budget and timeline. Placed 3rd out of 80+ national teams at Formula Bharat, India's largest Formula Student competition.</p>
+  </div>
+  <div class="lead-item">
+    <h4>Captain &mdash; Basketball, MSRIT</h4>
+    <p>Captained a 15+ player squad across two seasons, owning training schedules and match strategy. Won 1st at Blitz Goa (national) and 1st at the Manipal intra-college tournament.</p>
+  </div>
+  <div class="lead-item">
+    <h4>Model United Nations, St. Paul's &nbsp;&middot;&nbsp; Chess Club, MSRIT</h4>
+    <p>Placed 2nd at an inter-college MUN debate competition. FIDE-rated 1234; team placed 3rd at the RVCE intercollegiate tournament.</p>
+  </div>
+</section>
+
+<footer>
+  <p class="foot-line">Got a gap worth closing?</p>
+  <div class="contact" style="margin:0">
+    <a href="mailto:prithvi.aryan071@gmail.com">prithvi.aryan071@gmail.com</a>
+    <a href="tel:+918618565590">+91 86185 65590</a>
+    <a href="https://linkedin.com/in/prithvi-c-2ba646403">LinkedIn</a>
+  </div>
+</footer>
+
+</div>
+</body>
+</html>
