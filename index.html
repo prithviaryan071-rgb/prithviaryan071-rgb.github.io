@@ -4,359 +4,537 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Prithvi C Balaji — Business Analyst</title>
-<meta name="description" content="Business analyst intern at Tricog Health. I find the gap between where a business is and where it wants to be, then help close it.">
+<meta name="description" content="Business analyst intern at Tricog Health. I find the gap between where a business is and where it wants to be, then help close it. Work, with the evidence attached.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#0E1116;
-    --slate:#414B58;
-    --paper:#E9ECF0;
-    --card:#F4F6F8;
-    --rule:#C0C8D2;
-    --measure:#2547D0;
-    --closed:#0E7C5A;
-    --display:"Archivo","Helvetica Neue",Arial,sans-serif;
-    --body:"Newsreader",Georgia,serif;
-    --data:"JetBrains Mono",ui-monospace,Menlo,monospace;
+    --ink:#12222b;
+    --ink-soft:#4f6270;
+    --paper:#f6f7f5;
+    --card:#ffffff;
+    --line:#dfe4e1;
+    --accent:#0d5c63;
+    --accent-soft:#e7efee;
+    --measure:64ch;
   }
   *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important}}
   body{
     margin:0;background:var(--paper);color:var(--ink);
-    font-family:var(--body);font-size:18px;line-height:1.55;
-    font-weight:300;
+    font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+    font-size:17px;line-height:1.6;
+    -webkit-font-smoothing:antialiased;
   }
-  .wrap{max-width:840px;margin:0 auto;padding:0 28px}
+  .wrap{max-width:1020px;margin:0 auto;padding:0 24px}
+  a{color:var(--accent)}
+  a:focus-visible,button:focus-visible{outline:2.5px solid var(--accent);outline-offset:3px;border-radius:2px}
+  h1,h2,h3,h4{font-family:Lora,Georgia,serif;font-weight:600;line-height:1.2;margin:0}
+  p{margin:0 0 1em}
 
-  /* ---------- eyebrow / utility type ---------- */
-  .eyebrow{
-    font-family:var(--data);font-size:11px;font-weight:600;
-    letter-spacing:.16em;text-transform:uppercase;color:var(--slate);
-  }
+  /* ---------- top bar ---------- */
+  .bar{border-bottom:1px solid var(--line);background:rgba(246,247,245,.92);position:sticky;top:0;z-index:20;backdrop-filter:saturate(140%) blur(6px)}
+  .bar .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:56px}
+  .bar strong{font-family:Lora,Georgia,serif;font-weight:600;font-size:16px}
+  .bar nav{display:flex;gap:20px;font-size:14.5px}
+  .bar nav a{color:var(--ink-soft);text-decoration:none}
+  .bar nav a:hover{color:var(--accent)}
+  @media(max-width:720px){.bar nav a:not(.cv){display:none}}
 
   /* ---------- hero ---------- */
-  header{padding:80px 0 0}
-  h1{
-    font-family:var(--display);font-weight:800;
-    font-size:clamp(38px,7.2vw,68px);line-height:1.02;
-    letter-spacing:-.025em;margin:16px 0 0;
-  }
-  .lede{
-    font-size:clamp(19px,2.4vw,23px);line-height:1.45;
-    color:var(--slate);max-width:46ch;margin:22px 0 0;
-  }
-  .contact{
-    margin:30px 0 0;font-family:var(--data);font-size:12.5px;
-    letter-spacing:.02em;line-height:2.1;
-  }
-  .contact a{margin-right:18px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:2px}
-  .contact a:hover,.contact a:focus-visible{border-bottom-color:var(--measure);color:var(--measure)}
-  .contact span{color:var(--slate)}
-
-  /* ---------- signature: the gap bar ---------- */
-  .measure{margin:56px 0 0}
-  .measure-head{
-    display:flex;justify-content:space-between;align-items:baseline;
-    gap:16px;margin-bottom:10px;
-  }
-  .bar{
-    position:relative;height:34px;background:var(--card);
-    border:1px solid var(--rule);overflow:hidden;
-  }
-  .fill{
-    position:absolute;top:0;bottom:0;left:0;width:var(--to);background:var(--measure);
-    animation:grow 1.5s cubic-bezier(.2,.7,.25,1) .25s both;
-  }
-  .fill.done{background:var(--closed)}
-  @keyframes grow{from{width:0}to{width:var(--to)}}
-  .ticks{
-    display:flex;justify-content:space-between;
-    font-family:var(--data);font-size:11px;color:var(--slate);
-    margin-top:8px;letter-spacing:.04em;
-  }
-  .gap-note{
-    font-family:var(--data);font-size:11.5px;color:var(--measure);
-    font-weight:600;letter-spacing:.06em;text-transform:uppercase;
-  }
+  header.hero{padding:72px 0 40px;border-bottom:1px solid var(--line)}
+  .hero h1{font-size:clamp(38px,7vw,62px);letter-spacing:-.015em}
+  .hero .lede{max-width:var(--measure);font-size:20px;margin:18px 0 24px}
+  .hero .lede em{font-style:italic}
+  .meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:15px;color:var(--ink-soft)}
+  .meta a{text-decoration:none;border-bottom:1px solid var(--accent-soft)}
+  .place{font-size:14.5px;color:var(--ink-soft);margin:0 0 10px}
 
   /* ---------- sections ---------- */
-  section{padding:74px 0 0}
-  h2{
-    font-family:var(--display);font-weight:700;font-size:13px;
-    letter-spacing:.18em;text-transform:uppercase;color:var(--slate);
-    margin:0 0 26px;padding-bottom:12px;border-bottom:1px solid var(--rule);
-  }
+  section{padding:56px 0;border-bottom:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px}
+  .sec-head h2{font-size:17px;font-weight:500;font-style:italic;color:var(--accent)}
+  .sec-head .hair{flex:1;height:1px;background:var(--line)}
 
-  /* ---------- ledger entries ---------- */
-  .entry{padding:30px 0;border-bottom:1px solid var(--rule)}
-  .entry:last-child{border-bottom:0}
-  .entry-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap}
-  h3{
-    font-family:var(--display);font-weight:700;
-    font-size:clamp(21px,3vw,27px);letter-spacing:-.015em;
-    margin:0;line-height:1.2;
-  }
-  .role{color:var(--slate);font-size:17px;margin:4px 0 0}
-  .when{font-family:var(--data);font-size:12px;color:var(--slate);white-space:nowrap}
+  .entry{margin-top:34px}
+  .entry-top{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 20px}
+  .entry-top h3{font-size:29px}
+  .entry-top .when{font-size:14.5px;color:var(--ink-soft);white-space:nowrap}
+  .role{color:var(--ink-soft);font-size:16px;margin:4px 0 0}
 
-  .gmr{margin:20px 0 0;display:grid;gap:14px}
-  .gmr-row{display:grid;grid-template-columns:88px 1fr;gap:18px;align-items:start}
-  .gmr-label{
-    font-family:var(--data);font-size:10.5px;font-weight:600;
-    letter-spacing:.14em;text-transform:uppercase;color:var(--slate);
-    padding-top:6px;
-  }
-  .gmr-row p{margin:0;font-size:17px;line-height:1.5}
-  .result{border-left:2px solid var(--closed);padding-left:16px;margin-left:-18px}
-  .delta{font-family:var(--data);font-weight:600;color:var(--closed)}
+  .project{margin-top:34px;padding-top:26px;border-top:2px solid var(--ink)}
+  .project:first-of-type{border-top-color:var(--ink)}
+  .project h4{font-size:23px}
+  .project .tagline{color:var(--ink-soft);font-size:15.5px;margin:5px 0 0}
 
-  .qa{margin:18px 0 0;padding:18px 20px;background:var(--card);border:1px solid var(--rule)}
-  .qa .eyebrow{display:block;margin-bottom:10px}
-  .qa ul{margin:0;padding-left:18px}
-  .qa li{font-size:16px;color:var(--slate);margin-bottom:5px;font-style:italic}
-  .qa li:last-child{margin-bottom:0}
+  .gmr{margin:22px 0 0;display:grid;gap:18px}
+  @media(min-width:820px){.gmr{grid-template-columns:repeat(3,1fr);gap:26px}}
+  .gmr > div > span{display:block;font-family:Lora,Georgia,serif;font-style:italic;font-size:16px;color:var(--accent);margin-bottom:4px}
+  .gmr p{margin:0;font-size:15.5px}
 
-  /* ---------- two-col lists ---------- */
-  .cols{display:grid;grid-template-columns:1fr 1fr;gap:34px}
-  .stack p{margin:0 0 4px}
-  .stack .k{
-    font-family:var(--data);font-size:10.5px;font-weight:600;letter-spacing:.14em;
-    text-transform:uppercase;color:var(--slate);margin:0 0 6px;
-  }
-  .stack .v{font-size:16.5px;line-height:1.5;margin:0 0 22px}
-  .edu-row{display:flex;justify-content:space-between;gap:14px;padding:12px 0;border-bottom:1px solid var(--rule);flex-wrap:wrap}
-  .edu-row:last-child{border-bottom:0}
-  .edu-row strong{font-family:var(--display);font-weight:700;font-size:16px}
-  .edu-row .sub{color:var(--slate);font-size:15.5px}
-  .edu-row .num{font-family:var(--data);font-size:12.5px;color:var(--slate);white-space:nowrap}
+  .body{max-width:var(--measure)}
+  ul.tight{padding-left:20px;margin:0 0 1em;max-width:var(--measure)}
+  ul.tight li{margin-bottom:6px}
+  .qbox{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--accent);padding:16px 20px;max-width:var(--measure);margin:0 0 24px}
+  .qbox span{display:block;font-family:Lora,Georgia,serif;font-style:italic;font-size:16.5px;color:var(--accent);margin-bottom:8px}
+  .qbox ul{margin:0;padding-left:18px}
+  .qbox li{margin-bottom:4px;font-size:15.5px}
 
-  .lead-item{padding:16px 0;border-bottom:1px solid var(--rule)}
-  .lead-item:last-child{border-bottom:0}
-  .lead-item h4{font-family:var(--display);font-weight:700;font-size:16.5px;margin:0 0 4px}
-  .lead-item p{margin:0;font-size:16.5px;color:var(--slate);line-height:1.5}
+  /* ---------- evidence ---------- */
+  .evidence{margin-top:26px}
+  .ev-label{font-family:Lora,Georgia,serif;font-style:italic;font-size:16px;color:var(--ink-soft);margin-bottom:12px}
+  .shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+  .shot{padding:0;border:1px solid var(--line);background:var(--card);cursor:zoom-in;display:block;text-align:left;font:inherit;color:inherit;overflow:hidden}
+  .shot img{display:block;width:100%;height:150px;object-fit:cover;object-position:top}
+  .shot.tall img{height:230px;object-position:center}
+  .shot figcaption,.shot .cap{padding:9px 11px;font-size:13.5px;line-height:1.4;color:var(--ink-soft);border-top:1px solid var(--line)}
+  .shot:hover{border-color:var(--accent)}
 
-  footer{padding:70px 0 90px;margin-top:60px;border-top:1px solid var(--rule)}
-  .foot-line{font-family:var(--display);font-weight:700;font-size:clamp(22px,4vw,34px);letter-spacing:-.02em;margin:0 0 20px}
+  .files{list-style:none;padding:0;margin:18px 0 0;display:grid;gap:10px}
+  @media(min-width:820px){.files{grid-template-columns:1fr 1fr}}
+  .files a{display:flex;gap:12px;align-items:baseline;background:var(--card);border:1px solid var(--line);padding:13px 15px;text-decoration:none;color:var(--ink)}
+  .files a:hover{border-color:var(--accent)}
+  .files .kind{font-size:12px;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:2px 7px;white-space:nowrap}
+  .files .what{font-size:15px;line-height:1.35}
+  .files .what small{display:block;color:var(--ink-soft);font-size:13.5px}
+  .try{display:inline-flex;align-items:center;gap:9px;margin:18px 0 4px;background:var(--accent);color:#fff;
+    text-decoration:none;padding:12px 20px;font-size:16px;font-weight:500;border:1px solid var(--accent)}
+  .try:hover{background:#0a4a50}
+  .try small{font-weight:400;opacity:.85;font-size:14px}
+  .note{font-size:14px;color:var(--ink-soft);max-width:var(--measure);margin-top:14px}
 
-  a:focus-visible{outline:2px solid var(--measure);outline-offset:3px}
+  /* ---------- simple lists ---------- */
+  .cols{display:grid;gap:26px;margin-top:26px}
+  @media(min-width:820px){.cols{grid-template-columns:1fr 1fr}}
+  .kv{margin:0 0 14px}
+  .kv strong{display:block;font-family:Lora,Georgia,serif;font-style:italic;font-weight:500;font-size:16.5px;color:var(--accent);margin-bottom:3px}
+  .kv p{margin:0;font-size:16px}
 
-  @media (max-width:640px){
-    body{font-size:17px}
-    .wrap{padding:0 20px}
-    header{padding-top:52px}
-    .cols{grid-template-columns:1fr;gap:26px}
-    .gmr-row{grid-template-columns:1fr;gap:6px}
-    .gmr-label{padding-top:0}
-    .result{margin-left:0;border-left:0;border-top:2px solid var(--closed);padding-left:0;padding-top:12px}
-  }
-  @media (prefers-reduced-motion:reduce){
-    .fill{animation:none;width:var(--to)}
-  }
+  .edu{margin-top:22px}
+  .edu > div{display:flex;flex-wrap:wrap;justify-content:space-between;gap:4px 18px;padding:12px 0;border-bottom:1px solid var(--line)}
+  .edu > div b{font-weight:600}
+  .edu > div span{color:var(--ink-soft);font-size:14.5px}
+
+  /* ---------- beyond work ---------- */
+  .side{margin-top:34px;display:grid;gap:22px;align-items:start}
+  @media(min-width:820px){.side{grid-template-columns:minmax(0,1fr) 330px;gap:34px}
+    .side.flip{grid-template-columns:330px minmax(0,1fr)}
+    .side.flip .txt{order:2}}
+  .side h4{font-size:21px}
+  .side p{margin:8px 0 0;font-size:16px}
+  .side figure{margin:0}
+  .side .shot img{height:auto;max-height:340px;object-fit:cover}
+
+  footer{padding:60px 0 80px}
+  footer h2{font-size:clamp(26px,4vw,36px);max-width:22ch}
+  footer .meta{margin-top:20px;font-size:16.5px}
+
+  /* ---------- lightbox ---------- */
+  #lb{position:fixed;inset:0;background:rgba(12,20,26,.94);display:none;z-index:60;padding:24px}
+  #lb.on{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px}
+  #lb img{max-width:100%;max-height:78vh;object-fit:contain;background:#fff}
+  #lb p{color:#e7eceb;font-size:15px;margin:0;max-width:70ch;text-align:center}
+  #lb button{position:absolute;top:16px;right:20px;background:none;border:1px solid #7d8f97;color:#e7eceb;font:inherit;font-size:15px;padding:6px 14px;cursor:pointer}
 </style>
 </head>
 <body>
 
-<div class="wrap">
-
-<header>
-  <p class="eyebrow">Bengaluru, India &nbsp;/&nbsp; B.E. Electronics &amp; Communication, 2027</p>
-  <h1>Prithvi C Balaji</h1>
-  <p class="lede">I find the gap between where a business is and where it wants to be &mdash; then help close it. Currently a business analyst intern on Tricog Health's Automation &amp; Business Intelligence team.</p>
-
-  <div class="contact">
-    <a href="mailto:prithvi.aryan071@gmail.com">prithvi.aryan071@gmail.com</a>
-    <a href="tel:+918618565590">+91 86185 65590</a>
-    <a href="https://linkedin.com/in/prithvi-c-2ba646403">LinkedIn</a>
+<div class="bar">
+  <div class="wrap">
+    <strong>Prithvi C Balaji</strong>
+    <nav>
+      <a href="#tricog">Tricog Health</a>
+      <a href="#redbull">Red Bull</a>
+      <a href="#kapoors">Kapoor's Cafe</a>
+      <a href="#beyond">Beyond work</a>
+      <a class="cv" href="Prithvi-C-Balaji-Resume.pdf">Resume</a>
+    </nav>
   </div>
+</div>
 
-  <div class="measure">
-    <div class="measure-head">
-      <p class="eyebrow" style="margin:0">The problem I build for</p>
-      <p class="gap-note" style="margin:0">Gap: 5 units</p>
-    </div>
-    <div class="bar"><div class="fill" style="--to:75%;width:75%"></div></div>
-    <div class="ticks">
-      <span>15 achieved</span>
-      <span>AOP 20</span>
-    </div>
-    <p style="margin:14px 0 0;color:var(--slate);font-size:16.5px;max-width:56ch">
-      An area sales manager ends July at 15 units against a target of 20. The gap is easy to see. Knowing <em>which dealers and which unworked leads will close it</em> is not. That is the problem I was handed at Tricog, and it is the kind of problem I want to keep working on.
+<header class="hero">
+  <div class="wrap">
+    <p class="place">Bengaluru, India — B.E. Electronics &amp; Communication, 2027</p>
+    <h1>Prithvi C Balaji</h1>
+    <p class="lede">I find the gap between where a business is and where it wants to be, then help close it.
+      Right now I'm a business analyst intern on Tricog Health's Automation &amp; Business Intelligence team, where
+      I've built two things that work. Everything below has the evidence attached — the decks, the documents, the
+      screens.</p>
+    <p class="meta">
+      <a href="mailto:prithvi.aryan071@gmail.com">prithvi.aryan071@gmail.com</a>
+      <a href="tel:+918618565590">+91 86185 65590</a>
+      <a href="https://linkedin.com/in/prithvi-c-2ba646403">LinkedIn</a>
+      <a href="Prithvi-C-Balaji-Resume.pdf">Download resume (PDF)</a>
     </p>
   </div>
 </header>
 
-<section>
-  <h2>Work</h2>
+<!-- ============ TRICOG ============ -->
+<section id="tricog">
+  <div class="wrap">
+    <div class="sec-head"><h2>Work</h2><span class="hair"></span></div>
 
-  <article class="entry">
-    <div class="entry-top">
-      <div>
+    <div class="entry">
+      <div class="entry-top">
         <h3>Tricog Health</h3>
-        <p class="role">Business Analyst Intern &mdash; Automation &amp; Business Intelligence</p>
+        <span class="when">2026 – Present · Bengaluru</span>
       </div>
-      <p class="when">2026 &ndash; Present</p>
-    </div>
+      <p class="role">Business Analyst Intern — Automation &amp; Business Intelligence</p>
+      <p class="body" style="margin-top:14px">Tricog reads ECGs for diagnostic centres and hospitals across India. Two
+        parts of that business ran on people repeating themselves: the sales team, and the support desk. I was given both.</p>
 
-    <div class="gmr">
-      <div class="gmr-row">
-        <p class="gmr-label">Gap</p>
-        <p>Area sales managers had no self-service way to understand how to close their monthly target gap &mdash; no quick view of which dealers or agents were best positioned to help, or which open leads were still sitting unworked.</p>
+      <!-- ---- project 1 ---- -->
+      <div class="project">
+        <h4>GIGA CHAT — a support desk that lives in WhatsApp</h4>
+        <p class="tagline">Built, tested with real users, and presented to company leadership. Waiting on a licence and a
+          go-live decision, not on development.</p>
+        <a class="try" href="https://wa.me/917204386787?text=Hi%20Tricog%20Support%2C%20I%27d%20like%20some%20help">Message the assistant on WhatsApp <small>wa.me/917204386787</small></a>
+
+        <div class="gmr">
+          <div><span>The gap</span><p>Every support query was handled by a person, one at a time — 85,308 tickets in a
+            year, absorbed by a team of fewer than ten. A loose lead cable was explained by voice hundreds of times a month,
+            and a centre that hit an error at 9pm waited until morning.</p></div>
+          <div><span>The move</span><p>I read the whole year of tickets and found that 89% fell into only four kinds of
+            problem. That made a guided assistant viable: four taps from "something is wrong" to a specific fix, on the app
+            our customers already have open.</p></div>
+          <div><span>The result</span><p>Fixes that used to need an agent now arrive instantly, at any hour. When the fix
+            doesn't work, the customer taps once and a ticket appears for the team — already labelled with the category,
+            device, exact problem and priority.</p></div>
+        </div>
+
+        <div class="qbox">
+          <span>What I actually did</span>
+          <ul>
+            <li>Mapped all 156 ticket types onto four problem families, and sized each one.</li>
+            <li>Consolidated five scattered internal guides into one knowledge base of 93 documented issues.</li>
+            <li>Rewrote every issue as a short instruction card for a stressed technician on a small screen.</li>
+            <li>Tagged each issue fix-it-yourself, team-handled, or straight to a person — the tag is what decides
+              whether the assistant answers or hands over.</li>
+            <li>Compared six platforms before anything was built, and wrote up why one won.</li>
+            <li>Built the sixteen linked conversation flows in WATI, the automatic handover into Zoho Desk, and the
+              risk list that went with it.</li>
+          </ul>
+        </div>
+
+        <div class="evidence">
+          <p class="ev-label">Evidence — from the leadership review</p>
+          <div class="shots">
+            <figure class="shot" data-full="assets/img/gigachat-01-problem.jpg" data-cap="The problem, sized: 7,109 support tickets a month, 323 every working day, 711+ per agent.">
+              <img src="assets/img/gigachat-01-problem.jpg" alt="Slide showing monthly support ticket volumes">
+              <figcaption>The problem, in numbers</figcaption></figure>
+            <figure class="shot" data-full="assets/img/gigachat-02-opportunity.jpg" data-cap="All 156 issue types mapped onto four problem families. 89% of the queue falls into four kinds of problem; 42% are things a customer can fix themselves with the right instructions.">
+              <img src="assets/img/gigachat-02-opportunity.jpg" alt="Slide showing 89% of tickets falling into four categories">
+              <figcaption>Why automation was viable</figcaption></figure>
+            <figure class="shot" data-full="assets/img/gigachat-03-how-it-works.jpg" data-cap="The customer journey: five steps from a scanned QR code to an illustrated fix, then one question — did this solve your problem? — that decides whether a ticket is created at all.">
+              <img src="assets/img/gigachat-03-how-it-works.jpg" alt="Slide showing the four-tap customer journey">
+              <figcaption>Four taps to a fix</figcaption></figure>
+            <figure class="shot" data-full="assets/img/gigachat-04-customer-experience.jpg" data-cap="Live screenshots from the support WhatsApp number: pick a category, narrow it down, get the fix and confirm whether it worked.">
+              <img src="assets/img/gigachat-04-customer-experience.jpg" alt="Slide showing live WhatsApp screenshots of the assistant">
+              <figcaption>What the customer sees</figcaption></figure>
+            <figure class="shot" data-full="assets/img/gigachat-05-knowledge-base.jpg" data-cap="The foundation: five internal guides consolidated, 93 issues documented, five device families covered, sixteen linked flows built — and the triage tag that makes routing possible.">
+              <img src="assets/img/gigachat-05-knowledge-base.jpg" alt="Slide showing the consolidated knowledge base">
+              <figcaption>The knowledge base</figcaption></figure>
+            <figure class="shot" data-full="assets/img/gigachat-06-integration.jpg" data-cap="How a WhatsApp message becomes a support ticket, end to end — including the one limitation I chose to accept and flagged openly.">
+              <img src="assets/img/gigachat-06-integration.jpg" alt="Slide showing the message-to-ticket flow">
+              <figcaption>Message to ticket</figcaption></figure>
+            <figure class="shot" data-full="assets/img/gigachat-07-flow-router.jpg" data-cap="Under the hood: one main menu routing into sixteen specialist flows, because a single flow can't hold every device and topic.">
+              <img src="assets/img/gigachat-07-flow-router.jpg" alt="Slide showing the router and sixteen linked flows">
+              <figcaption>Sixteen linked flows</figcaption></figure>
+          </div>
+
+          <ul class="files">
+            <li><a href="assets/docs/GIGA-CHAT-WhatsApp-support-automation-deck.pdf">
+              <span class="kind">PDF</span><span class="what">The full project review<small>The deck I presented to leadership — problem, build, risks and the decisions needed to launch</small></span></a></li>
+            <li><a href="assets/docs/support-ticket-classification-map.pdf">
+              <span class="kind">PDF</span><span class="what">Ticket classification map<small>Every ticket type sorted into the four families the assistant routes on</small></span></a></li>
+            <li><a href="assets/docs/support-guide-sample-report-issues.pdf">
+              <span class="kind">PDF</span><span class="what">Knowledge base sample<small>One of the five guides, rewritten for customers instead of engineers, with triage tags</small></span></a></li>
+          </ul>
+          <p class="note">Customer names, phone numbers and the live bot number have been removed from these materials.</p>
+        </div>
       </div>
-      <div class="gmr-row">
-        <p class="gmr-label">Move</p>
-        <p>Scoped the problem with the sales organisation, then built a conversational AI agent that answers those questions directly, in plain language, with charts on demand.</p>
-      </div>
-      <div class="gmr-row result">
-        <p class="gmr-label">Result</p>
-        <p>ASMs can now interrogate their own number instead of waiting on a report. <span class="delta">Self-service, dealer-wise, on demand.</span></p>
+
+      <!-- ---- project 2 ---- -->
+      <div class="project">
+        <h4>A sales assistant for area sales managers</h4>
+        <p class="tagline">A working prototype that answers the question a manager actually has at month end.</p>
+
+        <div class="gmr">
+          <div><span>The gap</span><p>An area sales manager ending the month at 6 units against a target of 22 can see
+            the gap easily. Knowing <em>which dealers and which unworked leads will close it</em> meant waiting on someone
+            else to pull a report.</p></div>
+          <div><span>The move</span><p>I scoped the questions with the sales organisation, then built an assistant that
+            reads the live sales tracker and answers them in plain language — achievement against target, the dealers best
+            placed to help, and open leads dealer by dealer.</p></div>
+          <div><span>The result</span><p>Managers can interrogate their own number instead of asking for a report. Every
+            answer can be checked by hand against the sheet, which is what made the sales team trust it.</p></div>
+        </div>
+
+        <div class="qbox">
+          <span>Questions the assistant answers</span>
+          <ul>
+            <li>How am I doing against my target this month?</li>
+            <li>Which dealers should I lean on to close the gap?</li>
+            <li>What open leads do I have, dealer by dealer?</li>
+            <li>Show me the raw numbers so I can check them against the sheet.</li>
+          </ul>
+        </div>
+        <p class="body">The unglamorous half of this was the data: three trackers recorded the same months, dealers and
+          managers in three different ways. Reconciling them is why the answers tie back to the sheet.</p>
+
+        <div class="evidence">
+          <p class="ev-label">Evidence — the prototype running</p>
+          <div class="shots">
+            <figure class="shot tall" data-full="assets/img/sales-agent-terminal.png" data-cap="The prototype answering all three questions for one manager and one month, then printing the raw numbers underneath so the sales team can check every figure by hand. Manager and dealer names are hidden here.">
+              <img src="assets/img/sales-agent-terminal.png" alt="Terminal showing the sales assistant answering target, dealer and lead questions">
+              <figcaption>One manager, one month, three answers — names hidden</figcaption></figure>
+          </div>
+          <ul class="files">
+            <li><a href="assets/docs/sales-intelligence-agent-prototype.py">
+              <span class="kind">CODE</span><span class="what">The prototype<small>Readable end to end. Company data replaced with placeholders and invented sample names</small></span></a></li>
+          </ul>
+        </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="qa">
-      <p class="eyebrow">Questions the agent answers</p>
-      <ul>
-        <li>How do I close my remaining target for this month?</li>
-        <li>Which dealers should I lean on to hit my number?</li>
-        <li>What open leads do I have, dealer-wise?</li>
-        <li>Show me my achievement with a chart.</li>
-      </ul>
-    </div>
-
-    <div class="gmr" style="margin-top:26px">
-      <div class="gmr-row">
-        <p class="gmr-label">Gap</p>
-        <p>Customer support was answering the same first-response questions by hand, from a knowledge base scattered across sources.</p>
-      </div>
-      <div class="gmr-row">
-        <p class="gmr-label">Move</p>
-        <p>Built a menu-based WhatsApp support chatbot in <strong>n8n</strong> covering four query categories &mdash; hardware, software, reporting, and account/billing &mdash; and consolidated the knowledge base into a single categorised repository by mapping and classifying historical ticket types. Designed the human-agent escalation logic.</p>
-      </div>
-      <div class="gmr-row result">
-        <p class="gmr-label">Result</p>
-        <p>First responses handled automatically, with a <span class="delta">clean escalation path</span> to a human when the bot cannot resolve it. Contributed to dashboards tracking ticket volume and resolution.</p>
-      </div>
-    </div>
-  </article>
-
-  <article class="entry">
-    <div class="entry-top">
-      <div>
+<!-- ============ RED BULL ============ -->
+<section id="redbull">
+  <div class="wrap">
+    <div class="sec-head"><h2>Selling, on the ground</h2><span class="hair"></span></div>
+    <div class="entry">
+      <div class="entry-top">
         <h3>Red Bull</h3>
-        <p class="role">Student Marketeer &mdash; MSRIT Campus</p>
+        <span class="when">2024 – 2025 · MSRIT campus</span>
       </div>
-      <p class="when">2024 &ndash; 2025</p>
-    </div>
-    <div class="gmr">
-      <div class="gmr-row">
-        <p class="gmr-label">Gap</p>
-        <p>The brand had no reliable on-campus distribution and no consistent presence at MSRIT.</p>
-      </div>
-      <div class="gmr-row">
-        <p class="gmr-label">Move</p>
-        <p>Analysed student footfall patterns, pitched the college canteen on stocking the product, and negotiated placement &mdash; owning the account from first approach through to close. Ran brand-activation events and the recruitment funnel end to end.</p>
-      </div>
-      <div class="gmr-row result">
-        <p class="gmr-label">Result</p>
-        <p><span class="delta">+33% on-campus sales.</span> 16 participants signed up for the Red Bull Wings for Life World Run.</p>
-      </div>
-    </div>
-  </article>
+      <p class="role">Student Marketeer</p>
 
-  <article class="entry">
-    <div class="entry-top">
-      <div>
+      <div class="gmr">
+        <div><span>The gap</span><p>The brand had no reliable distribution on campus and no consistent presence at
+          MSRIT — students couldn't buy it where they actually were.</p></div>
+        <div><span>The move</span><p>I studied where students gather and when, pitched the college canteen on stocking
+          the product, and negotiated placement — owning the account from first approach to close. Then ran the activation
+          events and the event recruitment funnel end to end.</p></div>
+        <div><span>The result</span><p>On-campus sales up 33%, and 16 students signed up for the Red Bull Wings for Life
+          World Run. A year of being the brand's daily face to students, faculty and vendors.</p></div>
+      </div>
+
+      <div class="evidence">
+        <p class="ev-label">On the ground</p>
+        <div class="shots">
+          <figure class="shot tall" data-full="assets/img/redbull-activation.jpg" data-cap="At a Red Bull motorsport activation — the events side of the role, alongside the canteen account.">
+            <img src="assets/img/redbull-activation.jpg" alt="Prithvi at a Red Bull motorsport activation event">
+            <figcaption>Brand activation, trackside</figcaption></figure>
+          <figure class="shot tall" data-full="assets/img/redbull-motojam.jpg" data-cap="Red Bull Moto Jam India. Working motorsport events is where I learned how the brand actually reaches people.">
+            <img src="assets/img/redbull-motojam.jpg" alt="Red Bull Moto Jam India show car display">
+            <figcaption>Red Bull Moto Jam India</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ KAPOOR'S ============ -->
+<section id="kapoors">
+  <div class="wrap">
+    <div class="sec-head"><h2>Client project</h2><span class="hair"></span></div>
+    <div class="entry">
+      <div class="entry-top">
         <h3>Kapoor's Cafe</h3>
-        <p class="role">Business diagnostic &amp; advisory &mdash; management coursework</p>
+        <span class="when">2025 – 2026</span>
       </div>
-      <p class="when">2025 &ndash; 2026</p>
-    </div>
-    <div class="gmr">
-      <div class="gmr-row">
-        <p class="gmr-label">Gap</p>
-        <p>An independent cafe was losing reach it could not account for, and the owner had no diagnosis of why.</p>
-      </div>
-      <div class="gmr-row">
-        <p class="gmr-label">Move</p>
-        <p>Ran an on-site diagnostic &mdash; site visit plus a structured interview with the founder &mdash; and used root-cause analysis to surface an unaddressed gap in the marketing strategy. Pitched a targeted social-media initiative directly to him.</p>
-      </div>
-      <div class="gmr-row result">
-        <p class="gmr-label">Result</p>
-        <p>The owner adopted the recommendation. It contributed to a reported <span class="delta">26% increase in sales</span>, validated directly by the founder.</p>
-      </div>
-    </div>
-  </article>
-</section>
+      <p class="role">Business diagnostic and advisory — management coursework, real client</p>
 
-<section>
-  <h2>What I work with</h2>
-  <div class="cols">
-    <div class="stack">
-      <p class="k">Business</p>
-      <p class="v">Requirements gathering, sales &amp; pipeline analysis, market research, industry and competitor analysis, root-cause analysis, stakeholder interviewing, negotiation, presentations.</p>
-      <p class="k">Languages spoken</p>
-      <p class="v">English, Hindi, Kannada (native). Tamil, Telugu, Malayalam (conversational).</p>
-    </div>
-    <div class="stack">
-      <p class="k">Technical</p>
-      <p class="v">SQL, Power BI, n8n workflow automation, conversational AI and chatbot design, Advanced Excel, Advanced PowerPoint, Python, C, C++, data structures &amp; algorithms.</p>
-      <p class="k">Also</p>
-      <p class="v">100+ problems solved on LeetCode.</p>
-    </div>
-  </div>
-</section>
+      <div class="gmr">
+        <div><span>The gap</span><p>An independent cafe that had grown from nine tables to 25+ franchise outlets was
+          losing reach the owner couldn't account for, and had no diagnosis of why.</p></div>
+        <div><span>The move</span><p>I ran an on-site diagnostic — a visit plus a structured interview with the founder
+          at his home — and mapped the business properly: model, unit economics, franchise structure, risks. Then traced
+          the constraint to an unaddressed gap in marketing and pitched a focused social media plan directly to him.</p></div>
+        <div><span>The result</span><p>He adopted the recommendation. He reported a 26% increase in sales afterwards,
+          and confirmed it to me directly.</p></div>
+      </div>
 
-<section>
-  <h2>Education</h2>
-  <div class="edu-row">
-    <div>
-      <strong>M S Ramaiah Institute of Technology</strong>
-      <div class="sub">B.E., Electronics &amp; Communication &mdash; Bengaluru</div>
+      <div class="evidence">
+        <p class="ev-label">Evidence — the case study</p>
+        <div class="shots">
+          <figure class="shot tall" data-full="assets/img/kapoors-cafe-founder-interview.jpg" data-cap="With Mr. Arpit Kapoor, founder and CEO of Kapoor's Cafe, after the founder interview. Most of what the diagnostic turned on came out of this conversation.">
+            <img src="assets/img/kapoors-cafe-founder-interview.jpg" alt="Prithvi with the founder of Kapoor's Cafe after the interview">
+            <figcaption>The founder interview</figcaption></figure>
+          <figure class="shot" data-full="assets/img/kapoors-01-title.jpg" data-cap="The case study I built from the diagnostic: from nine tables to 25+ franchises.">
+            <img src="assets/img/kapoors-01-title.jpg" alt="Title slide of the Kapoor's Cafe case study">
+            <figcaption>The case study</figcaption></figure>
+          <figure class="shot" data-full="assets/img/kapoors-02-unit-economics.jpg" data-cap="Unit economics per outlet — cost structure, margin, break-even period and payback. Working these out is what made the marketing gap obvious.">
+            <img src="assets/img/kapoors-02-unit-economics.jpg" alt="Slide showing cost structure and unit economics per outlet">
+            <figcaption>Unit economics</figcaption></figure>
+          <figure class="shot" data-full="assets/img/kapoors-03-key-challenges.jpg" data-cap="The six challenges holding the franchise model back, ranked by severity.">
+            <img src="assets/img/kapoors-03-key-challenges.jpg" alt="Slide listing the cafe's six key challenges">
+            <figcaption>Key challenges, ranked</figcaption></figure>
+        </div>
+        <ul class="files">
+          <li><a href="assets/docs/Kapoors-Cafe-case-study.pdf">
+            <span class="kind">PDF</span><span class="what">The full case study<small>Founder background, business model, unit economics, compliance, risks and growth plan</small></span></a></li>
+          <li><a href="assets/docs/Kapoors-Cafe-case-study.pptx">
+            <span class="kind">PPTX</span><span class="what">The same deck, editable<small>PowerPoint version</small></span></a></li>
+        </ul>
+      </div>
     </div>
-    <div class="num">CGPA 7.9 / 10 &nbsp;&middot;&nbsp; 2023&ndash;2027</div>
-  </div>
-  <div class="edu-row">
-    <div>
-      <strong>Deeksha College</strong>
-      <div class="sub">Pre-University, Science (PCMB) &mdash; Bengaluru</div>
-    </div>
-    <div class="num">95% &nbsp;&middot;&nbsp; 2021&ndash;2023</div>
-  </div>
-  <div class="edu-row">
-    <div>
-      <strong>St. Paul's English School</strong>
-      <div class="sub">ICSE, Class X &mdash; Bengaluru</div>
-    </div>
-    <div class="num">89% &nbsp;&middot;&nbsp; 2011&ndash;2021</div>
   </div>
 </section>
 
-<section>
-  <h2>Leading &amp; competing</h2>
-  <div class="lead-item">
-    <h4>Mechanical Team Lead &mdash; Steir Racing (Formula Student), MSRIT</h4>
-    <p>Led the mechanical subsystem team in designing and manufacturing a working EV race car in-house, under fixed budget and timeline. Placed 3rd out of 80+ national teams at Formula Bharat, India's largest Formula Student competition.</p>
+<!-- ============ SKILLS ============ -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head"><h2>What I work with</h2><span class="hair"></span></div>
+    <div class="cols">
+      <div>
+        <div class="kv"><strong>Business</strong><p>Requirements gathering, sales and pipeline analysis, market research,
+          industry and competitor analysis, root-cause analysis, stakeholder interviews, negotiation, presenting to senior
+          audiences.</p></div>
+        <div class="kv"><strong>Tools</strong><p>SQL, Power BI, Excel (advanced), PowerPoint (advanced), Python,
+          WATI (WhatsApp automation), Zoho Desk, chatbot design.</p></div>
+      </div>
+      <div>
+        <div class="kv"><strong>Languages spoken</strong><p>English, Hindi and Kannada (native). Tamil, Telugu and
+          Malayalam (conversational).</p></div>
+        <div class="kv"><strong>Away from work</strong><p>Chess and speedcubing — 2x2 through 5x5, plus mirror and pyramid
+          cubes. Running, swimming, cycling and trekking. Angling. Reading self-help and non-fiction. 100+ problems solved
+          on LeetCode.</p></div>
+      </div>
+    </div>
+
+    <div class="edu">
+      <div class="kv" style="border:0;padding-bottom:0"><strong>Education</strong></div>
+      <div><b>M S Ramaiah Institute of Technology</b><span>B.E., Electronics &amp; Communication — Bengaluru · 2023–2027</span></div>
+      <div><b>Deeksha College</b><span>Pre-University, Science (PCMB) — Bengaluru · 2021–2023</span></div>
+      <div><b>St. Paul's English School</b><span>ICSE — Bengaluru · 2011–2021</span></div>
+    </div>
   </div>
-  <div class="lead-item">
-    <h4>Captain &mdash; Basketball, MSRIT</h4>
-    <p>Captained a 15+ player squad across two seasons, owning training schedules and match strategy. Won 1st at Blitz Goa (national) and 1st at the Manipal intra-college tournament.</p>
-  </div>
-  <div class="lead-item">
-    <h4>Model United Nations, St. Paul's &nbsp;&middot;&nbsp; Chess Club, MSRIT</h4>
-    <p>Placed 2nd at an inter-college MUN debate competition. FIDE-rated 1234; team placed 3rd at the RVCE intercollegiate tournament.</p>
+</section>
+
+<!-- ============ BEYOND WORK ============ -->
+<section id="beyond">
+  <div class="wrap">
+    <div class="sec-head"><h2>Leading and competing</h2><span class="hair"></span></div>
+
+    <div class="side">
+      <div class="txt">
+        <h4>Mechanical team lead — Steir Racing, Formula Student</h4>
+        <p>MSRIT, 2023 – present. I led the mechanical subsystem team building an electric race car in-house, in the
+          college lab, to a fixed budget and a fixed deadline. That means design, manufacturing, and the arguments in
+          between — deciding what to cut when the timeline says you can't have everything.</p>
+        <p>We placed 3rd out of more than 80 national teams at Formula Bharat, India's largest Formula Student
+          competition.</p>
+      </div>
+      <figure class="shot" data-full="assets/img/steir-racing-formula-bharat.jpg" data-cap="Formula Bharat, on the grid with the team after the result.">
+        <img src="assets/img/steir-racing-formula-bharat.jpg" alt="Prithvi with the Steir Racing team at Formula Bharat">
+        <figcaption>Formula Bharat, with the team</figcaption></figure>
+    </div>
+
+    <div class="side flip">
+      <div class="txt">
+        <h4>The car, on track</h4>
+        <p>E14 running at Formula Bharat. Everything on it was designed and manufactured by the team.</p>
+      </div>
+      <figure class="shot" data-full="assets/img/steir-racing-car-on-track.jpg" data-cap="Steir Racing's E14 on track at Formula Bharat.">
+        <img src="assets/img/steir-racing-car-on-track.jpg" alt="Steir Racing car E14 running on track">
+        <figcaption>E14 on track</figcaption></figure>
+    </div>
+
+    <div class="side">
+      <div class="txt">
+        <h4>Captain — basketball, MSRIT</h4>
+        <p>2023 – present. Two seasons captaining a 15-player squad, owning training schedules and match strategy. We won
+          1st at Blitz Goa, a national tournament, and 1st at the Manipal intra-college tournament.</p>
+        <p>Captaining is the closest thing I've had to managing people: getting fifteen individuals to agree on a plan and
+          then hold to it under pressure.</p>
+      </div>
+      <figure class="shot" data-full="assets/img/basketball-captain.jpg" data-cap="Number 23. Two seasons as captain of the MSRIT squad.">
+        <img src="assets/img/basketball-captain.jpg" alt="Prithvi in his basketball jersey, number 23">
+        <figcaption>Captain, number 23</figcaption></figure>
+    </div>
+
+    <div class="side flip">
+      <div class="txt">
+        <h4>Model United Nations — St. Paul's</h4>
+        <p>Placed 2nd at an inter-college MUN debate competition. MUN is where I learned to hold a position in a room full
+          of people arguing against it, and to make a case that gets a decision rather than applause.</p>
+      </div>
+      <figure class="shot" data-full="assets/img/mun-debate.jpg" data-cap="Ahead of an MUN debate session.">
+        <img src="assets/img/mun-debate.jpg" alt="Prithvi in formal dress before an MUN session">
+        <figcaption>Before a debate session</figcaption></figure>
+    </div>
+
+    <div class="side">
+      <div class="txt">
+        <h4>Chess Club — MSRIT</h4>
+        <p>FIDE-rated player. Our team placed 3rd at the RVCE intercollegiate tournament. I still play rated games most
+          weeks — it's the cheapest available practice at thinking a few moves further than feels necessary.</p>
+      </div>
+      <figure class="shot" data-full="assets/img/chess-rating.jpg" data-cap="A rated win — the habit rather than the rating is the point.">
+        <img src="assets/img/chess-rating.jpg" alt="Screenshot of a rated chess game result">
+        <figcaption>Still playing rated</figcaption></figure>
+    </div>
   </div>
 </section>
 
 <footer>
-  <p class="foot-line">Got a gap worth closing?</p>
-  <div class="contact" style="margin:0">
-    <a href="mailto:prithvi.aryan071@gmail.com">prithvi.aryan071@gmail.com</a>
-    <a href="tel:+918618565590">+91 86185 65590</a>
-    <a href="https://linkedin.com/in/prithvi-c-2ba646403">LinkedIn</a>
+  <div class="wrap">
+    <h2>Got a gap worth closing?</h2>
+    <p class="meta">
+      <a href="mailto:prithvi.aryan071@gmail.com">prithvi.aryan071@gmail.com</a>
+      <a href="tel:+918618565590">+91 86185 65590</a>
+      <a href="https://linkedin.com/in/prithvi-c-2ba646403">LinkedIn</a>
+      <a href="Prithvi-C-Balaji-Resume.pdf">Resume (PDF)</a>
+      <a href="https://wa.me/917204386787?text=Hi%20Tricog%20Support%2C%20I%27d%20like%20some%20help">Try GIGA CHAT on WhatsApp</a>
+    </p>
   </div>
 </footer>
 
+<div id="lb" role="dialog" aria-modal="true" aria-label="Enlarged image">
+  <button type="button" id="lbclose">Close</button>
+  <img id="lbimg" alt="">
+  <p id="lbcap"></p>
 </div>
+
+<script>
+(function(){
+  var lb=document.getElementById('lb'), img=document.getElementById('lbimg'),
+      cap=document.getElementById('lbcap'), btn=document.getElementById('lbclose'), last=null;
+
+  document.querySelectorAll('.shot').forEach(function(el){
+    el.setAttribute('tabindex','0');
+    el.setAttribute('role','button');
+    var f=el.querySelector('figcaption');
+    el.setAttribute('aria-label','Enlarge: '+(f?f.textContent.trim():'image'));
+    el.addEventListener('click',function(){open(el)});
+    el.addEventListener('keydown',function(e){
+      if(e.key==='Enter'||e.key===' '){e.preventDefault();open(el)}
+    });
+  });
+
+  function open(el){
+    last=el;
+    img.src=el.getAttribute('data-full');
+    img.alt=el.querySelector('img').alt;
+    cap.textContent=el.getAttribute('data-cap')||'';
+    lb.classList.add('on');
+    btn.focus();
+    document.body.style.overflow='hidden';
+  }
+  function close(){
+    lb.classList.remove('on');
+    img.src='';
+    document.body.style.overflow='';
+    if(last)last.focus();
+  }
+  btn.addEventListener('click',close);
+  lb.addEventListener('click',function(e){if(e.target===lb||e.target===img)close()});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lb.classList.contains('on'))close()});
+})();
+</script>
 </body>
 </html>
